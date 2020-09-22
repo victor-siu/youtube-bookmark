@@ -9,17 +9,32 @@ var youbook = new Vue(
     data: {
       theme: 'red',
       videoQuery: {},
+      columnQuery: {},
+      current: ''
     },
     computed: {
     },
     methods: {
-      fetchQuery(){
+      fetchVideos(){
         axios('https://api.fighter.hk/youtube/videos.php').then(
           res =>{
             this.videoQuery = res.data.videos;
-
           }
         )
+      },
+      fetchColumns(){
+        axios('https://api.fighter.hk/youtube/columns.php?exist').then(
+          res => {
+            this.columnQuery = res.data.columns;
+          }
+        )
+      },
+      videoEmbed(url){
+        var temp = 'https://www.youtube.com/embed/';
+        var id = url.match(/[^v=]*$/);
+        temp += id;
+        console.error(temp);
+        return temp;
       },
       videoThumb(url){
         var id, temp;
@@ -29,7 +44,8 @@ var youbook = new Vue(
       }
     },
     mounted(){
-      this.fetchQuery();
+      this.fetchVideos();
+      this.fetchColumns();
     }
   }
 )
