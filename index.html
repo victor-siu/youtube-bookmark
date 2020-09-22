@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>YouTube Bookmark</title>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar dark app :class="theme">
+        <v-avatar class="white mr-3">
+          <v-icon :class="theme + '--text'">mdi-youtube</v-icon>
+        </v-avatar>
+        <v-toolbar-title>YouTube Bookmark</v-toolbar-title>
+      </v-app-bar>
+      <v-main>
+        <v-container>
+          <v-row>
+            <v-col>
+              <!-- List -->
+              <v-card class="pa-3 mb-3" v-for="video in videoQuery" keys="video.vid">
+                <v-row>
+                  <v-col md="3">
+                    <v-img :src="videoThumb(video.url)"></v-img>
+                  </v-col>
+                  <v-col md="9">
+                    <v-btn dark target="_blank" :href="video.url" :class="theme"><v-icon>mdi-play-circle</v-icon>Watch</v-btn>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.20.0/dist/axios.min.js" integrity="sha256-KyY5SqyBmXeM0zfYBGU1tuqcstxpjkECApypY+CA4Z8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js" integrity="sha256-KSlsysqp7TXtFo/FHjb1T9b425x3hrvzjMWaJyKbpcI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-router@3.4.3/dist/vue-router.min.js" integrity="sha256-Ky1nx0ry5GPKhwH4gn5KG8HAXEGlgWYvovpukJo8dJs=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.min.js" integrity="sha256-K1TzKAdGgiXty4/khGTrq0axO2FK733qjDBqQiKmU3I=" crossorigin="anonymous"></script>
+  <script src="js/main.js" charset="utf-8"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+</body>
+</html>
