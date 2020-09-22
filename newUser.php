@@ -2,7 +2,7 @@
 
 require_once 'conn.php';
 
-$check_array = ['columnName', 'slug'];
+$check_array = ['username'];
 if (array_diff($check_array, array_keys($_POST))){
 	http_response_code(400);
     header('Content-Type: application/json');
@@ -10,13 +10,12 @@ if (array_diff($check_array, array_keys($_POST))){
     die();
 }
 
-$columnName = trimAndEscape($conn, $_POST['columnName']);
-$slug = trimAndEscape($conn, $_POST['slug']);
+$username = trimAndEscape($conn, $_POST['username']);
 
-$sqlCN = "INSERT INTO `columns` (`columnName`, `slug`) VALUES( '$columnName', '$slug' ) ";
-$resultCN = mysqli_query($conn,$sqlCN);
+$sqlUN = "INSERT INTO `users` (`username`) VALUES( '$username') ";
+$resultUN = mysqli_query($conn,$sqlUN);
 
-if ($resultCN) {
+if ($resultUN) {
 	http_response_code(200);
 	header('Content-Type: application/json');
 	echo 'Done so.';
