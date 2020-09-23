@@ -1,15 +1,16 @@
 <template>
-  <v-container>
+  <v-navigation-drawer>
     
-  </v-container>
+  </v-navigation-drawer>
 </template>
+
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'NavDrawer',
 
     data: () => ({
 
-    }),
+    })
   }
 </script>
