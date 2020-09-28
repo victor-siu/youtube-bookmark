@@ -19,9 +19,8 @@
       </v-app-bar>
       <v-main>
         <v-container>
-          <v-row>
+          <!-- <v-row>
             <v-col>
-              <!-- List -->
               <v-card class="pa-3 mb-3" v-for="(video,index) in videoQuery" :key="video.vid">
                 <v-row>
                   <v-col md="3">
@@ -45,6 +44,58 @@
                 </v-row>
               </v-card>
             </v-col>
+          </v-row> -->
+          <v-row>
+            <v-col cols="12">
+              <v-card class="pa-3">
+                <v-card-title class="pa-0">
+                  Submit new video
+                </v-card-title>
+                <v-form>
+                  <v-row>
+                    <v-col md="3">
+                      <v-autocomplete v-model="submission.uid" label="Tell me who are you" :items="userQuery" item-text="userName" item-value="uid" :color="theme" :item-color="theme">
+                      </v-autocomplete>
+                    </v-col>
+                    <v-col md="3">
+                      <v-autocomplete v-model="submission.cid" label="Which column?" :items="columnQuery" item-text="columnName" item-value="cid" :color="theme" :item-color="theme">
+                      </v-autocomplete>
+                    </v-col>
+                    <v-col md="6">
+                      <v-text-field v-model="submission.url" :color="theme" label="" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-form>
+                <v-card-actions>
+                  <v-btn dark :class="theme" @click="submitNewVideo()">Submit</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+
+            <v-col cols="12">
+              <v-card class="pa-3">
+                <v-card-title class="pa-0">
+                  Create new column
+                </v-card-title>
+                <v-form>
+                  <v-row>
+                    <v-col md="6">
+                      <v-text-field v-model="create.column" :color="theme" label="Column Name"></v-text-field>
+                    </v-col>
+                    <v-col md="6">
+                      <v-autocomplete v-model="create.slug" label="Pick a logo" :items="logoQuery" item-text="name" item-value="name" :color="theme" :item-color="theme" :prepend-icon="'mdi-' + create.slug">
+                        <template slot="item" slot-scope="list">
+                          <v-icon class="mr-3">{{ 'mdi-' + list.item.name }}</v-icon> {{ list.item.name }}
+                        </template>
+                      </v-autocomplete>
+                    </v-col>
+                  </v-row>
+                </v-form>
+                <v-card-actions>
+                  <v-btn dark :class="theme" @click="createNewColumn()">Create</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
           </v-row>
         </v-container>
       </v-main>
@@ -59,7 +110,7 @@
         </v-btn>
       </v-bottom-navigation>
       <v-btn fixed bottom right fab large :class="theme.split(' ')[0]+'--text ' + 'text--' + theme.split(' ')[1]" :to="'/submission'">
-        <v-icon >
+        <v-icon>
           mdi-plus
         </v-icon>
       </v-btn>

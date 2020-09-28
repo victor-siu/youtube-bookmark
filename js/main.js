@@ -4,12 +4,24 @@ var youbook = new Vue(
     vuetify: new Vuetify(),
     router: new VueRouter(
       {
+
       }
     ),
     data: {
-      theme: 'red darken-2',
-      videoQuery: {},
-      columnQuery: {},
+      theme: 'red darken-2', //all
+      videoQuery: {}, //home
+      columnQuery: {}, // home, submission
+      logoQuery: {}, //submission
+      userQuery: {}, //submission
+      submission: { //submission
+        uid: '',
+        cid: '',
+        url: ''
+      },
+      create: { //submission
+        column: '',
+        slug: ''
+      },
       bottomNav: 0
     },
     computed: {
@@ -29,9 +41,23 @@ var youbook = new Vue(
         )
       },
       fetchColumns(){
-        axios('https://api.fighter.hk/youtube/columns.php?exist').then(
+        axios('https://api.fighter.hk/youtube/columns.php?').then(
           res => {
             this.columnQuery = res.data.columns;
+          }
+        )
+      },
+      fetchUsers(){
+        axios('https://api.fighter.hk/youtube/users.php').then(
+          res => {
+            this.userQuery = res.data.users;
+          }
+        )
+      },
+      fetchLogos(){
+        axios('https://raw.githubusercontent.com/fgnass/mdi-json/master/icons.json').then(
+          res => {
+            this.logoQuery = res.data;
           }
         )
       },
@@ -50,11 +76,42 @@ var youbook = new Vue(
         id = url.match(/[^v=]*$/);
         temp = 'https://img.youtube.com/vi/' + id + '/0.jpg'
         return temp;
+      },
+      submitNewVideo(){
+        var path = 'https://api.fighter.hk/youtube/submission.php';
+        axios({
+          method: 'post',
+          url: path,
+          data: {
+            uid: this.submission.uid,
+            cid: this.submission.cid,
+            url: this.submission.url
+          }
+        }).then(
+          ()=>{
+            this.submission.uid = '';
+            this.submission.cid = '';
+            this.submission.url = '';
+          }
+        )
+      },
+      createNewColumn(){
+        var url = 'https://api.fighter.hk/youtube/newColumn.php';
+        axios({
+          method: 'post',
+          url: url,
+          data: {
+            columnName: this.create.column,
+            slug: this.create.slug
+          }
+        })
       }
     },
     created(){
-      this.fetchVideos();
-      this.fetchColumns();
+      this.fetchVideos(); //home
+      this.fetchColumns(); //home, submission
+      this.fetchUsers(); //submission
+      this.fetchLogos(); //submission
     }
   }
 )
