@@ -22,6 +22,9 @@ var youbook = new Vue(
         column: '',
         slug: ''
       },
+      register: {
+        name: ''
+      }, //submission
       bottomNav: 0
     },
     computed: {
@@ -78,10 +81,10 @@ var youbook = new Vue(
         return temp;
       },
       submitNewVideo(){
-        var path = 'https://api.fighter.hk/youtube/submission.php';
+        var url = 'https://api.fighter.hk/youtube/submission.php';
         axios({
           method: 'post',
-          url: path,
+          url: url,
           data: {
             uid: this.submission.uid,
             cid: this.submission.cid,
@@ -104,7 +107,17 @@ var youbook = new Vue(
             columnName: this.create.column,
             slug: this.create.slug
           }
-        })
+        })//remember to fetch column again
+      },
+      registerNewUser(){
+        var url = 'https://api.fighter.hk/youtube/newUser.php';
+        axios({
+          method: 'post',
+          url: url,
+          data: {
+            userName: this.register.name
+          }
+        }).then(this.fetchUsers())
       }
     },
     created(){

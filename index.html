@@ -83,7 +83,7 @@
                       <v-text-field v-model="create.column" :color="theme" label="Column Name"></v-text-field>
                     </v-col>
                     <v-col md="6">
-                      <v-autocomplete v-model="create.slug" label="Pick a logo" :items="logoQuery" item-text="name" item-value="name" :color="theme" :item-color="theme" :prepend-icon="'mdi-' + create.slug">
+                      <v-autocomplete v-model="create.slug" label="Pick a logo" persistent-hint hint="Please avoid using slug without icon" :items="logoQuery" item-text="name" item-value="name" :color="theme" :item-color="theme" :prepend-icon="'mdi-' + create.slug">
                         <template slot="item" slot-scope="list">
                           <v-icon class="mr-3">{{ 'mdi-' + list.item.name }}</v-icon> {{ list.item.name }}
                         </template>
@@ -93,6 +93,24 @@
                 </v-form>
                 <v-card-actions>
                   <v-btn dark :class="theme" @click="createNewColumn()">Create</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+
+            <v-col cols="12">
+              <v-card class="pa-3">
+                <v-card-title class="pa-0">
+                  Register new user
+                </v-card-title>
+                <v-form>
+                  <v-row>
+                    <v-col md="3">
+                      <v-text-field v-model="register.name" :color="theme" label="User Name"></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-form>
+                <v-card-actions>
+                  <v-btn dark :class="theme" @click="registerNewUser()">Create</v-btn>
                 </v-card-actions>
               </v-card>
             </v-col>
