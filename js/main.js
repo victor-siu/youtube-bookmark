@@ -107,7 +107,7 @@ var youbook = new Vue(
             columnName: this.create.column,
             slug: this.create.slug
           }
-        })//remember to fetch column again
+        }).then(()=>this.fetchColumns())
       },
       registerNewUser(){
         var url = 'https://api.fighter.hk/youtube/newUser.php';
@@ -117,7 +117,7 @@ var youbook = new Vue(
           data: {
             userName: this.register.name
           }
-        }).then(this.fetchUsers())
+        }).then(()=>this.fetchUsers())
       }
     },
     created(){
