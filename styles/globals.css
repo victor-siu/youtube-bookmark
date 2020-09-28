@@ -19,8 +19,8 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
+	/* font-size: 100%;
+	font: inherit; */
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -53,4 +53,15 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+:root{
+    --main-bg-color-day: #F0FFFF;
+	--main-text-color-day:#333333;
+	
+	--normal-span-color-day:#B2FBBB;
+	--warning-span-color-day:#FBBBB2;
+
+	--web-title-font-size:64px;
+	--web-content-font-size:18px;
 }
