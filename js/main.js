@@ -7,10 +7,10 @@ var youbook = new Vue(
       }
     ),
     data: {
-      theme: 'red',
+      theme: 'red darken-2',
       videoQuery: {},
       columnQuery: {},
-      current: ''
+      bottomNav: 0
     },
     computed: {
     },
@@ -19,6 +19,12 @@ var youbook = new Vue(
         axios('https://api.fighter.hk/youtube/videos.php').then(
           res =>{
             this.videoQuery = res.data.videos;
+          }
+        ).then(
+          ()=>{
+            this.videoQuery.forEach(video=>{
+              video.watchHere = false;
+            })
           }
         )
       },
@@ -29,11 +35,14 @@ var youbook = new Vue(
           }
         )
       },
+      watchHere(i){
+        this.videoQuery[i].watchHere = true;
+        this.$forceUpdate();
+      },
       videoEmbed(url){
         var temp = 'https://www.youtube.com/embed/';
         var id = url.match(/[^v=]*$/);
         temp += id;
-        console.error(temp);
         return temp;
       },
       videoThumb(url){
@@ -43,7 +52,7 @@ var youbook = new Vue(
         return temp;
       }
     },
-    mounted(){
+    created(){
       this.fetchVideos();
       this.fetchColumns();
     }
