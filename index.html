@@ -19,33 +19,38 @@
       </v-app-bar>
       <v-main>
         <v-container>
-          <!-- <v-row>
+          <v-row>
             <v-col>
               <v-card class="pa-3 mb-3" v-for="(video,index) in videoQuery" :key="video.vid">
                 <v-row>
                   <v-col md="3">
-                    <v-img v-if="!video.watchHere" width="416" height="230" :src="videoThumb(video.url)"></v-img>
-
+                    <v-img v-if="!video.watchHere" width="416" height="230" :src="video.thumbnail_url"></v-img>
                     <iframe v-if="video.watchHere" width="416" height="230" :src="videoEmbed(video.url)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay></iframe>
                   </v-col>
                   <v-col md="9">
-                    <v-btn dark target="_blank" :href="video.url" :class="theme">
-                      <v-icon>mdi-play-circle</v-icon>
-                      Watch on YouTube
-                      <v-icon>mdi-open-in-new</v-icon>
-                    </v-btn>
-                    <v-btn dark @click="watchHere(index)" :class="theme">
-                      <v-icon>mdi-play-circle-outline</v-icon>
-                      Watch Here
-                    </v-btn>
-                    <v-spacer></v-spacer>
+
+                    <v-card-title>{{ video.title }}</v-card-title>
+
+                    <v-card-text><a :to="video.author_url" target="_blank">{{ video.author_name }}</a></v-card-text>
                     <v-card-text>{{ video.columnName }}</v-card-text>
+
+                    <v-card-actions>
+                      <v-btn dark target="_blank" :href="video.url" :class="theme">
+                        <v-icon>mdi-play-circle</v-icon>
+                        Watch on YouTube
+                        <v-icon>mdi-open-in-new</v-icon>
+                      </v-btn>
+                      <v-btn dark @click="watchHere(index)" :class="theme">
+                        <v-icon>mdi-play-circle-outline</v-icon>
+                        Watch Here
+                      </v-btn>
+                    </v-card-actions>
                   </v-col>
                 </v-row>
               </v-card>
             </v-col>
-          </v-row> -->
-          <v-row>
+          </v-row>
+          <!-- <v-row>
             <v-col cols="12">
               <v-card class="pa-3">
                 <v-card-title class="pa-0">
@@ -114,7 +119,7 @@
                 </v-card-actions>
               </v-card>
             </v-col>
-          </v-row>
+          </v-row> -->
         </v-container>
       </v-main>
       <v-bottom-navigation app :color="theme" shift>

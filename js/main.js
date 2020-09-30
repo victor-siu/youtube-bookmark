@@ -39,6 +39,12 @@ var youbook = new Vue(
           ()=>{
             this.videoQuery.forEach(video=>{
               video.watchHere = false;
+
+              var oembed = 'https://oembed.fighter.hk/oembed?url=' + video.url + '&format=json'
+
+              axios(oembed).then(res=>{
+                video = Object.assign(video, res.data)
+              }).finally(()=>this.$forceUpdate())
             })
           }
         )
