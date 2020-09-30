@@ -17,7 +17,7 @@
         </v-avatar>
         <v-toolbar-title>YouTube Bookmark</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon @click="$vuetify.theme.dark = !$vuetify.theme.dark" :class="$vuetify.theme.dark ? 'yellow--text' : ''">
+        <v-btn icon @click="darkToggle" :class="$vuetify.theme.dark ? 'yellow--text' : ''">
           <v-icon>mdi-weather-night</v-icon>
         </v-btn>
       </v-app-bar>

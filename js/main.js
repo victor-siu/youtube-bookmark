@@ -27,9 +27,19 @@ var youbook = new Vue(
       },
       bottomNav: 0
     },
-    computed: {
-    },
     methods: {
+      darkToggle(){
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+
+        localStorage.setItem('darkMode', this.$vuetify.theme.dark);
+      },
+      getDarkBoolean(){
+        var temp = localStorage.getItem('darkMode');
+        console.log(temp);
+        if ( temp !== null ) {
+          this.$vuetify.theme.dark = JSON.parse(temp);
+        }
+      },
       fetchVideos(){
         axios('https://api.fighter.hk/youtube/videos.php').then(
           res =>{
@@ -134,6 +144,7 @@ var youbook = new Vue(
       }
     },
     created(){
+      this.getDarkBoolean(); //everywhere
       this.fetchVideos(); //home
       this.fetchColumns(); //home, submission
       this.fetchUsers(); //submission
