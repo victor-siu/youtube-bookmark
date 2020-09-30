@@ -35,7 +35,6 @@ var youbook = new Vue(
       },
       getDarkBoolean(){
         var temp = localStorage.getItem('darkMode');
-        console.log(temp);
         if ( temp !== null ) {
           this.$vuetify.theme.dark = JSON.parse(temp);
         }
