@@ -111,6 +111,7 @@ var youbook = new Vue(
             this.submission.uid = '';
             this.submission.cid = '';
             this.submission.url = '';
+            this.fetchVideos();
           }
         )
       },
