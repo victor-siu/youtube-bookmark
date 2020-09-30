@@ -53,15 +53,15 @@
                 </v-card-title>
                 <v-form>
                   <v-row>
-                    <v-col md="3">
+                    <v-col md="3" sm="6" cols="12">
                       <v-autocomplete v-model="submission.uid" label="Tell me who are you" :items="userQuery" item-text="userName" item-value="uid" :color="theme" :item-color="theme">
                       </v-autocomplete>
                     </v-col>
-                    <v-col md="3">
+                    <v-col md="3" sm="6" cols="12">
                       <v-autocomplete v-model="submission.cid" label="Which column?" :items="columnQuery" item-text="columnName" item-value="cid" :color="theme" :item-color="theme">
                       </v-autocomplete>
                     </v-col>
-                    <v-col md="6">
+                    <v-col md="6" sm="12" cols="12">
                       <v-text-field v-model="submission.url" :color="theme" label="" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></v-text-field>
                     </v-col>
                   </v-row>
@@ -79,10 +79,10 @@
                 </v-card-title>
                 <v-form>
                   <v-row>
-                    <v-col md="6">
+                    <v-col md="6" cols="12">
                       <v-text-field v-model="create.column" :color="theme" label="Column Name"></v-text-field>
                     </v-col>
-                    <v-col md="6">
+                    <v-col md="6" cols="12">
                       <v-autocomplete cache-items v-model="create.slug" label="Pick a logo" persistent-hint hint="Please avoid using slug without icon" :items="logoQuery" item-text="name" item-value="name" :color="theme" :item-color="theme" :prepend-icon="'mdi-' + create.slug">
                         <template slot="item" slot-scope="list">
                           <v-icon class="mr-3">{{ 'mdi-' + list.item.name }}</v-icon> {{ list.item.name }}
@@ -117,7 +117,7 @@
           </v-row>
         </v-container>
       </v-main>
-      <v-bottom-navigation fixed :color="theme" shift>
+      <v-bottom-navigation app :color="theme" shift>
         <v-btn value="0" :to="'/'">
           <span>主頁</span>
           <v-icon>mdi-home</v-icon>
