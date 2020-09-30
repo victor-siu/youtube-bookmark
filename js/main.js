@@ -4,7 +4,17 @@ var youbook = new Vue(
     vuetify: new Vuetify(),
     router: new VueRouter(
       {
-
+        routes: [
+          {
+            path: '/'
+          },
+          {
+            path: '/col/:column'
+          },
+          {
+            path: '/submission'
+          }
+        ]
       }
     ),
     data: {
@@ -26,6 +36,15 @@ var youbook = new Vue(
         name: ''
       },
       bottomNav: 0
+    },
+    computed: {
+      currentColumnName(){
+        var temp;
+
+        temp = this.columnQuery.find(item=>item.slug == this.$route.params.column)
+
+        return temp.columnName;
+      }
     },
     methods: {
       darkToggle(){
