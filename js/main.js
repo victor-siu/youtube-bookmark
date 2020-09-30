@@ -9,10 +9,10 @@ var youbook = new Vue(
     ),
     data: {
       theme: 'red darken-2', //all
-      videoQuery: {}, //home
-      columnQuery: {}, // home, submission
-      logoQuery: {}, //submission
-      userQuery: {}, //submission
+      videoQuery: [], //home
+      columnQuery: [], // home, submission
+      logoQuery: [], //submission
+      userQuery: [], //submission
       submission: { //submission
         uid: '',
         cid: '',
@@ -22,9 +22,9 @@ var youbook = new Vue(
         column: '',
         slug: ''
       },
-      register: {
+      register: { //submission
         name: ''
-      }, //submission
+      },
       bottomNav: 0
     },
     computed: {
