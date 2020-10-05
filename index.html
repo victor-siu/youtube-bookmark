@@ -30,7 +30,7 @@
               <v-card class="px-3 mb-3" v-for="(video,index) in videoQuery" :key="video.vid">
                 <v-row>
                   <v-col md="3">
-                    <v-img v-if="!video.watchHere" width="416" height="230" :src="video.thumbnail_url"></v-img>
+                    <v-img class="pointer" @click="watchHere(index)" v-if="!video.watchHere" width="416" height="230" :src="video.thumbnail_url"></v-img>
                     <iframe v-if="video.watchHere" width="416" height="230" :src="videoEmbed(video.url)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay></iframe>
                   </v-col>
                   <v-col md="9">
@@ -64,7 +64,7 @@
               <v-card class="px-3 mb-3" v-for="(video,index) in videoQuery" v-if="video.columnName == currentColumnName" :key="video.vid">
                 <v-row>
                   <v-col md="3">
-                    <v-img v-if="!video.watchHere" width="416" height="230" :src="video.thumbnail_url"></v-img>
+                    <v-img class="pointer" @click="watchHere(index)" v-if="!video.watchHere" width="416" height="230" :src="video.thumbnail_url"></v-img>
                     <iframe v-if="video.watchHere" width="416" height="230" :src="videoEmbed(video.url)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay></iframe>
                   </v-col>
                   <v-col md="9">
