@@ -25,7 +25,7 @@
         <v-container>
 
           <!-- Home -->
-          <v-row v-if="$route.path == '/'">
+          <v-row v-if="$route.name == 'home'">
             <v-col>
               <v-card class="px-3 mb-3" v-for="(video,index) in videoQuery" :key="video.vid">
                 <v-row>
@@ -58,7 +58,7 @@
           </v-row>
 
           <!-- Columns -->
-          <v-row v-else-if="$route.path == '/col/' + $route.params.column">
+          <v-row v-else-if="$route.name == 'column'">
             <v-col>
               <h2 class="mb-5">分類： {{ currentColumnName }}</h2>
               <v-card class="px-3 mb-3" v-for="(video,index) in videoQuery" v-if="video.columnName == currentColumnName" :key="video.vid">
@@ -92,7 +92,7 @@
           </v-row>
 
           <!-- Submission -->
-          <v-row v-else-if="$route.path == '/submission'">
+          <v-row v-else-if="$route.name == 'submission'">
             <v-col cols="12">
               <v-card class="pa-3">
                 <v-card-title class="pa-0">

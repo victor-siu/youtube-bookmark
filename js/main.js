@@ -6,13 +6,16 @@ var youbook = new Vue(
       {
         routes: [
           {
-            path: '/'
+            path: '/',
+            name: 'home'
           },
           {
-            path: '/col/:column'
+            path: '/col/:column',
+            name: 'column'
           },
           {
-            path: '/submission'
+            path: '/submission',
+            name: 'submission'
           }
         ]
       }
