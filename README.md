@@ -1,8 +1,16 @@
 # youtube-bookmark
 
+# The purpose
+This is an JSON API written in PHP.
+1. Store YouTube video link submissions to the database
+2. Return stored YouTube video links
+3. Create new columns for user submission
+4. Register new user
+
 ## Icon names
 
 in JSON: <https://raw.githubusercontent.com/fgnass/mdi-json/master/icons.json>
+
 in GUI: <https://materialdesignicons.com/>
 
 ## API Endpoints
